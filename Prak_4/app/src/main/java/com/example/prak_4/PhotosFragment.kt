@@ -29,6 +29,7 @@ class PhotosFragment : Fragment() {
         return binding.root
     }
 
+    // чтение информации из файла
     private fun readDateTimeFromFile(): List<String> {
         val photosDir =
             File(requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), "photos")

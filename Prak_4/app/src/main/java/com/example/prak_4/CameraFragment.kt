@@ -105,6 +105,7 @@ class CameraFragment : Fragment() {
 
     private fun saveDateTimeToFile() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+        // текущая дата с указанным выше форматом
         val currentDateTime = dateFormat.format(Date())
 
         val photosDir =
@@ -113,6 +114,7 @@ class CameraFragment : Fragment() {
             photosDir.mkdirs()
         }
 
+        // запись в файл
         val dateFile = File(photosDir, "date.txt")
         try {
             FileOutputStream(dateFile, true).use { outputStream ->
@@ -123,7 +125,7 @@ class CameraFragment : Fragment() {
         }
     }
 
-
+    // завершает работу cameraExecutor
     override fun onDestroy() {
         super.onDestroy()
         cameraExecutor.shutdown()
