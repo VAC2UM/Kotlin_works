@@ -12,10 +12,14 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun filmDao(): FilmDao
 
     companion object {
+        // @Volatile указывает, что поле INSTANCE может изменяться в разных потоках
         @Volatile
+        // Объявляние переменной INSTANCE, которая будет хранить единственный экземпляр базы данных.
         private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase {
+            // Проверка, существует ли уже экземпляр базы данных.
+            // Если нет, используется синхронизация, чтобы избежать создания нескольких экземпляров базы данных в многопоточной среде.
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,

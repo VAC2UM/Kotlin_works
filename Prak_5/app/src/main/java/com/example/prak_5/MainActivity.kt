@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         val call: Call<ArrayList<Film>> = retrofitAPI.getAllFilms()
 
+        // Отправка асинхронного запроса к API.
         call.enqueue(object : Callback<ArrayList<Film>> {
             override fun onResponse(
                 call: Call<ArrayList<Film>>,
