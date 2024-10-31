@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,4 +49,12 @@ dependencies {
     // below dependency for using retrofit.
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    implementation ("androidx.room:room-runtime:2.5.0")
+    kapt ("androidx.room:room-compiler:2.5.0")
+
+    // Coroutine support for Room
+    implementation ("androidx.room:room-ktx:2.5.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 }

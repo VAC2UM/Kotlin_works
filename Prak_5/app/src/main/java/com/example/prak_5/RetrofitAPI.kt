@@ -4,6 +4,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface RetrofitAPI {
-    @GET("W344")
+    @GET("d286-4953-47fe-830d")
     fun getAllFilms(): Call<ArrayList<Film>>
 }
