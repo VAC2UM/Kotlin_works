@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -16,13 +17,18 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var filmRV: RecyclerView
     lateinit var loadingPB: ProgressBar
     lateinit var filmAdapter: FilmAdapter
     lateinit var filmList: ArrayList<Film>
+    @Inject
     lateinit var db: AppDatabase
+    @Inject
+    lateinit var retrofitAPI: RetrofitAPI
     lateinit var buttonNext: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         filmRV = findViewById(R.id.idRVFilms)
         loadingPB = findViewById(R.id.idPBLoading)
         buttonNext = findViewById(R.id.buttonNext)
-        db = AppDatabase.getDatabase(this)
+//        db = AppDatabase.getDatabase(this)
 
         filmList = ArrayList()
 
